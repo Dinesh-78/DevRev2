@@ -1,0 +1,124 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Vaccine slot details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: rgb(76, 226, 206);
+        }
+
+        .table_content {
+            border-collapse: collapse;
+            margin: 25px;
+            /* min-width: 400px; */
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px black;
+        }
+
+        .table_content thead tr {
+            /* background-color: #009879; */
+            background-color: rgba(0, 0, 0, 0.678);
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .table_content th,
+        .talbel_content td {
+            padding: 10px 10px;
+        }
+
+        .table_content tbody tr {
+            border-bottom: 1px solid #dddddd;
+            font-size: 0.9em;
+            text-align: center;
+            /* border: 1px solid black; */
+        }
+
+        .table_content tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3e8;
+        }
+
+        .table_content tbody tr:nth-of-type(odd) {
+            background-color: white;
+        }
+
+        .table_content tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        input[type=text] {
+            width: 30%;
+            padding: 2px
+        }
+
+        h1 {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgba(0, 0, 0, 0.788);
+            font-weight: bold;
+        }
+
+        .vacimg {
+            display: block;
+            padding-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body style="background-color:rgb(76, 226, 206);text-decoration: none;">
+<!--    <form method="GET" action="{% url 'search' %}">-->
+<!--        {{form.as_p}}-->
+<!--        <input type="submit" value="submit" class="btn-btn-primary" />-->
+<!--    </form>-->
+    <div class="container">
+
+        <img src="{% static 'images/vac.jpeg'%}" width="400" height="400" class="vacimg"><br>
+        <center>
+            <form action="{% url 'search' %}" method="GET">
+                 {{form.as_p}}
+                <input type="submit" value="submit" class="btn btn-dark" />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name/Add</th>
+                            <th>CITY</th>
+                            <th>Area</th>
+                            <th>OTIME</th>
+                             <th>CTIME</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in vaccine %}
+                        <tr>
+                            <td>{{i.name}}</td>
+                            <td>{{i.city}}</td>
+                            <td>{{i.area}}</td>
+
+                            <td>{{i.otime}}</td>
+                            <td>{{i.ctime}}</td>
+                            <td><button class="btn btn-dark">Book Slot</button></td>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </center>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+        crossorigin="anonymous"></script>
+</body>
+
+
+</html>
